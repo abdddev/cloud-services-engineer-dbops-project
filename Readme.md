@@ -3,6 +3,6 @@
 
 1. Создадим БД в PostgreSQL "store":
   CREATE DATABASE store;
-2. Создадим нового пользователя для миграций и автотестов, назнчим ему права:
+2. Создадим нового пользователя для миграций и автотестов, назначим ему права:
   CREATE ROLE migration_service_user WITH LOGIN PASSWORD 'super_secret';
   GRANT ALL PRIVILEGES ON DATABASE store TO migration_service_user;
