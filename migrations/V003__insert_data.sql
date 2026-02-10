@@ -7,5 +7,10 @@ VALUES
   (5, 'Мюнхенская',     'https://res.cloudinary.com/sugrobov/image/upload/v1623323635/repos/sausages/2.jpg', 330.00),
   (6, 'Русская',        'https://res.cloudinary.com/sugrobov/image/upload/v1623323635/repos/sausages/1.jpg', 189.00);
 
-INSERT INTO orders (id, status, date_created) SELECT i, (ARRAY['pending', 'shipped', 'cancelled'])[1 + floor(random() * 3)::int], (CURRENT_DATE - (floor(random() * 90))::int) FROM generate_series(1, 10000000) s(i);
-INSERT INTO order_product (quantity, order_id, product_id) SELECT floor(1+random()*50)::int, i, 1 + floor(random()*6)::int % 6 FROM generate_series(1, 10000000) s(i);
+INSERT INTO orders (id, status, date_created)
+SELECT i, (ARRAY['pending', 'shipped', 'cancelled'])[1 + floor(random() * 3)::int], (CURRENT_DATE - (floor(random() * 90))::int)
+FROM generate_series(1, 10000000) s(i);
+
+INSERT INTO order_product (quantity, order_id, product_id)
+SELECT floor(1+random()*50)::int, i, 1 + floor(random()*6)::int % 6
+FROM generate_series(1, 10000000) s(i);
